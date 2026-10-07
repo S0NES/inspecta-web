@@ -1,0 +1,288 @@
+.admin-container {
+  padding: 28px 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 780px) {
+  .admin-container {
+    padding: 20px 18px;
+  }
+}
+
+.admin-header-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-32);
+  gap: var(--space-20);
+}
+
+.admin-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.admin-subtitle {
+  color: var(--mv-fg2);
+  font-size: 14px;
+  margin-top: var(--space-8);
+}
+
+@media (max-width: 780px) {
+  .admin-header-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-header-section button {
+    width: 100%;
+  }
+}
+
+/* Header-right: botão de filtro à esquerda do botão de criar */
+.admin-header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+@media (max-width: 900px) {
+  .admin-header-section {
+    flex-wrap: wrap;
+  }
+  .admin-header-right {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 780px) {
+  .admin-header-right {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* Linha clicável (detalhe compacto). O grid/hover vive em ListTable.css. */
+.admin-row--clickable {
+  cursor: pointer;
+}
+
+.admin-title {
+  font-weight: 600;
+  margin-bottom: var(--space-4);
+}
+
+.admin-subtitle {
+  font-size: 12px;
+  color: var(--mv-fg2);
+}
+
+.admin-col-user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  min-width: 0;
+}
+
+.admin-avatar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--mv-subtle);
+  color: var(--mv-fg2);
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--font-secondary);
+}
+
+.admin-user-info {
+  min-width: 0;
+}
+
+.admin-user-email {
+  font-size: 12px;
+  color: var(--mv-fg2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-empty {
+  padding: var(--space-32);
+  text-align: center;
+  color: var(--mv-fg2);
+  font-size: 13px;
+}
+
+@media (max-width: 780px) {
+  .admin-header--users {
+    display: none;
+  }
+
+  .admin-row--users {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .admin-col-perfil::before,
+  .admin-col-status::before {
+    font-family: var(--font-secondary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mv-fg3);
+    content: attr(data-label);
+    display: block;
+    margin-bottom: var(--space-4);
+  }
+}
+
+/* Status cell + chip de reenvio de convite */
+.admin-col-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+/* Aparência de badge "outline"; troca "Convidado" → "Reenviar" no hover/foco.
+   As duas legendas ocupam a mesma célula de grid, então a largura não pula. */
+.resend-chip {
+  display: inline-grid;
+  align-items: center;
+  justify-items: center;
+  padding: var(--space-4) var(--space-10);
+  border: 1px solid var(--mv-line);
+  border-radius: var(--border-radius-sm);
+  background: transparent;
+  color: var(--mv-fg);
+  font-family: var(--font-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: border-color 120ms ease, color 120ms ease, background-color 120ms ease;
+}
+
+.resend-chip__text {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+  transition: opacity 120ms ease;
+}
+
+.resend-chip__text--hover {
+  opacity: 0;
+}
+
+.resend-chip:hover:not(:disabled),
+.resend-chip:focus-visible {
+  border-color: var(--mv-brand-primary);
+  color: var(--mv-brand-primary);
+}
+
+.resend-chip:hover:not(:disabled) .resend-chip__text--idle,
+.resend-chip:focus-visible .resend-chip__text--idle {
+  opacity: 0;
+}
+
+.resend-chip:hover:not(:disabled) .resend-chip__text--hover,
+.resend-chip:focus-visible .resend-chip__text--hover {
+  opacity: 1;
+}
+
+.resend-chip:focus-visible {
+  outline: 2px solid var(--mv-brand-primary);
+  outline-offset: 2px;
+}
+
+.resend-chip:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Invite dialog form */
+.invite-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-14);
+}
+
+.invite-form-hint {
+  font-size: 12px;
+  color: var(--mv-fg2);
+  margin: 0 0 var(--space-4);
+}
+
+.admin-inline-toggle { background: none; border: none; padding: 0; cursor: pointer; }
+.admin-inline-toggle:disabled { opacity: 0.5; cursor: default; }
+
+.admin-perfil-select { max-width: 180px; min-width: 140px; }
+
+.admin-expand-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: auto;
+  cursor: pointer;
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--mv-fg2);
+  transition: color var(--transition-fast);
+}
+.admin-expand-btn:hover { color: var(--mv-brand-primary); }
+
+.admin-user-detail {
+  padding: var(--space-12) var(--space-16);
+  border-bottom: 1px solid var(--mv-line);
+  background: var(--mv-subtle);
+}
+
+.invite-vist-imobs { border: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-4); }
+.invite-vist-imob { display: flex; gap: var(--space-6); align-items: center; font-size: 13px; }
+
+/* Detalhe compacto e somente-leitura de uma linha (ex.: imobiliária) — mesmo
+   padrão visual de `.detail-grid`/`.detail-item` em Properties.css. */
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-16);
+}
+
+@media (max-width: 780px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.detail-label {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-secondary);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mv-fg3);
+}
+
+.detail-value {
+  font-size: 13px;
+  font-family: var(--font-primary);
+  color: var(--mv-fg);
+  margin: 0;
+}

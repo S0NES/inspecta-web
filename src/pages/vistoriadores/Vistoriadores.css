@@ -1,0 +1,64 @@
+.vist-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding: 28px 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 780px) {
+  .vist-container { padding: 20px 18px; }
+}
+
+/* Como aba dentro de Clientes: a tela mãe já cuida do padding e da largura. */
+.vist-container--embedded {
+  padding: 0;
+  max-width: none;
+  gap: var(--space-12);
+}
+
+.vist-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.vist-subtitle { color: var(--mv-fg2); margin: var(--space-4) 0 0; max-width: 64ch; }
+.vist-empty { color: var(--mv-fg2); font-size: 13px; padding: var(--space-8) 0; margin: 0; }
+
+.vist-item { border-bottom: 1px solid var(--mv-line); }
+.vist-item:last-child { border-bottom: none; }
+.vist-item-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: var(--space-12) 0; cursor: pointer; gap: var(--space-12);
+  border-left: 2px solid transparent;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+.vist-item-head:hover {
+  background: rgba(15, 166, 139, 0.06);
+  border-left-color: var(--mv-brand-primary);
+}
+.vist-item-meta {
+  display: block;
+  font-family: var(--font-secondary);
+  font-size: 11px;
+  color: var(--mv-fg2);
+  margin-top: var(--space-2);
+}
+.vist-toggle { background: none; border: none; cursor: pointer; padding: 0; }
+
+.vist-detail { display: flex; flex-direction: column; gap: var(--space-12); padding: 0 0 var(--space-12); }
+.vist-block h4 {
+  margin: 0 0 var(--space-8);
+  font-family: var(--font-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mv-fg2);
+}
+.vist-cidade-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-8); }
+.vist-cidade { display: flex; gap: var(--space-6); align-items: center; font-size: 13px; }
+.vist-raio { max-width: 140px; }
+.vist-pracas-resumo { font-family: var(--font-secondary); font-size: 11px; color: var(--mv-fg2); margin: 0; }

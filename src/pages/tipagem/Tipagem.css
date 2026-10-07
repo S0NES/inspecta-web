@@ -1,0 +1,191 @@
+.tipagem-container {
+  padding: 28px 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 780px) {
+  .tipagem-container { padding: 20px 18px; }
+}
+
+.tipagem-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-16);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-12);
+}
+
+.tipagem-panel {
+  margin-top: var(--space-16);
+}
+
+.tipagem-empty {
+  color: var(--mv-fg3);
+  font-size: 13px;
+  padding: var(--space-12);
+  margin: 0;
+}
+
+.tipagem-item {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-10);
+  padding: var(--space-14) 0;
+  border-bottom: 1px solid var(--mv-line-soft);
+}
+
+.tipagem-item:last-child { border-bottom: none; }
+
+.tipagem-item-bar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+  width: 100%;
+}
+
+.tipagem-item-main {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.tipagem-item-name {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-primary);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--mv-fg);
+  cursor: pointer;
+  text-align: left;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.tipagem-item-name--static { cursor: default; }
+
+.tipagem-item-tipos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tipagem-tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border: 1px solid var(--mv-line);
+  border-radius: 999px;
+  color: var(--mv-fg3);
+}
+
+.tipagem-muted { color: var(--mv-fg3); font-size: 12px; }
+
+.tipagem-item-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  flex-shrink: 0;
+}
+
+.tipagem-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: 12px;
+  color: var(--mv-fg3);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.tipagem-link:hover { color: var(--mv-fg); }
+.tipagem-link--danger { color: var(--mv-danger); }
+.tipagem-link:disabled { opacity: 0.5; cursor: default; }
+
+.tipagem-edit {
+  max-width: 320px;
+}
+
+.tipagem-field {
+  margin-top: var(--space-12);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tipagem-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--mv-fg3);
+}
+
+/* Lista dos serviços agrupados: um select adiciona no topo, cada linha tem o
+   nome + o ID externo à direita + botão de remover. */
+.tipagem-grouped-list {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--mv-line);
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+}
+
+.tipagem-grouped-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-10);
+  border-bottom: 1px solid var(--mv-line-soft);
+}
+
+.tipagem-grouped-row:last-child {
+  border-bottom: none;
+}
+
+.tipagem-grouped-nome {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  color: var(--mv-fg);
+}
+
+.tipagem-grouped-remove {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  color: var(--mv-fg3);
+  cursor: pointer;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.tipagem-grouped-remove:hover {
+  color: var(--mv-danger);
+  background-color: rgba(15, 166, 139, 0.08);
+}
+
+.tipagem-codigo-input {
+  flex-shrink: 0;
+  width: 120px;
+  font-size: 12px;
+  padding: 4px 8px;
+}

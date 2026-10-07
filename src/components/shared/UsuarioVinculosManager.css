@@ -1,0 +1,24 @@
+.uvm { display: flex; flex-direction: column; gap: var(--space-8); }
+.uvm-title {
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mv-fg2);
+  margin: 0;
+}
+.uvm-text { font-size: 13px; color: var(--mv-fg2); margin: 0; }
+.uvm-chips { display: flex; gap: var(--space-8); flex-wrap: wrap; }
+.uvm-chip { display: inline-flex; align-items: center; gap: var(--space-4); }
+.uvm-remove {
+  background: none;
+  border: none;
+  color: var(--mv-fg2);
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  transition: color var(--transition-fast);
+}
+.uvm-remove:hover:not(:disabled) { color: var(--mv-danger); }
+.uvm-add > select { max-width: 260px; }

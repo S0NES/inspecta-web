@@ -1,0 +1,105 @@
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(220px, 1fr));
+  gap: var(--space-12);
+  overflow-x: auto;
+  padding-bottom: var(--space-8);
+  /* Ocupa quase toda a altura visível — o quadro vazio não fica flutuando no topo. */
+  align-items: stretch;
+  min-height: max(420px, calc(100vh - var(--header-height) - 200px));
+}
+
+.kanban-col {
+  background: var(--mv-bg);
+  border: 1px solid var(--mv-line-soft);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  min-height: 120px;
+}
+
+.kanban-col-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-4);
+}
+
+.kanban-col-count {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--mv-fg2);
+}
+
+.kanban-col-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  /* Cresce para preencher a coluna até a base do quadro. */
+  flex: 1;
+}
+
+.kanban-empty {
+  font-size: 12px;
+  color: var(--mv-fg2);
+  text-align: center;
+  padding: var(--space-12) 0;
+  margin: 0;
+}
+
+.kanban-card {
+  background: var(--mv-surface);
+  border: 1px solid var(--mv-line);
+  border-radius: var(--border-radius-sm);
+  padding: var(--space-10);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: border-color var(--transition-fast);
+}
+
+.kanban-card:hover {
+  border-color: var(--mv-brand-primary);
+}
+
+.kanban-card:focus-visible {
+  outline: none;
+  border-color: var(--mv-brand-primary);
+  box-shadow: 0 0 0 2px var(--mv-brand-primary);
+}
+
+.kanban-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kanban-card-id {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.kanban-card-urgent {
+  color: var(--mv-brand-primary);
+  font-size: 10px;
+}
+
+.kanban-card-addr {
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.kanban-card-meta {
+  display: flex;
+  gap: var(--space-6);
+  font-family: var(--font-secondary);
+  font-size: 11px;
+  color: var(--mv-fg2);
+  flex-wrap: wrap;
+}

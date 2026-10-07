@@ -1,0 +1,28 @@
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-main {
+  margin-left: var(--sidebar-width);
+  margin-top: var(--header-height);
+  flex: 1;
+  overflow-y: auto;
+  background-color: var(--mv-bg);
+  transition: margin-left var(--transition-base);
+}
+
+.app-main--collapsed {
+  margin-left: var(--sidebar-width-collapsed);
+}
+
+@media (max-width: 780px) {
+  .app-main {
+    margin-left: 0;
+  }
+
+  .app-main--collapsed {
+    margin-left: 0;
+  }
+}

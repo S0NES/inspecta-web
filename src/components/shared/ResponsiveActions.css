@@ -1,0 +1,14 @@
+.responsive-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-8);
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+}
+
+/* Rótulos nunca quebram — quando falta espaço a secundária colapsa para o menu,
+   ela não encolhe. */
+.responsive-actions .btn {
+  white-space: nowrap;
+}

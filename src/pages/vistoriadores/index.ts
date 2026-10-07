@@ -1,0 +1,1 @@
+export { Vistoriadores } from './Vistoriadores';

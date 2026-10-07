@@ -1,0 +1,108 @@
+.profile-container {
+  padding: 28px 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 780px) {
+  .profile-container {
+    padding: 20px 18px;
+  }
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-32);
+  gap: var(--space-20);
+}
+
+@media (max-width: 780px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.profile-subtitle {
+  color: var(--mv-fg2);
+  font-size: 14px;
+  margin-top: var(--space-8);
+}
+
+.profile-container .card {
+  padding: var(--space-24) var(--space-28);
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.profile-field-label {
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mv-fg3);
+}
+
+.profile-field-value {
+  font-size: 15px;
+  font-family: var(--font-primary);
+  color: var(--mv-fg);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.profile-actions {
+  margin-top: var(--space-32);
+  padding-top: var(--space-24);
+  border-top: 1px solid var(--mv-line-soft);
+}
+
+.profile-reset-hint {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--mv-fg2);
+  margin: 0 0 var(--space-16);
+}
+
+.profile-error {
+  padding: var(--space-12);
+  background-color: rgba(15, 166, 139, 0.08);
+  border: 1px solid var(--mv-brand-primary);
+  border-radius: var(--border-radius-sm);
+  color: var(--mv-brand-primary);
+  font-size: 13px;
+  margin-bottom: var(--space-16);
+}
+
+.profile-resend {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: var(--space-8);
+  font-size: 13px;
+  color: var(--mv-fg2);
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color var(--transition-fast);
+}
+
+.profile-resend:hover:not(:disabled) {
+  color: var(--mv-brand-primary);
+}
+
+.profile-resend:disabled {
+  cursor: default;
+  opacity: 0.6;
+}

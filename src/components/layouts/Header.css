@@ -1,0 +1,154 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: var(--sidebar-width);
+  right: 0;
+  height: var(--header-height);
+  background-color: var(--mv-bg);
+  border-bottom: 1px solid var(--mv-line);
+  display: flex;
+  align-items: center;
+  z-index: 99;
+  transition: left var(--transition-base);
+}
+
+/* Acompanha a barra lateral recolhida. */
+.header--collapsed {
+  left: var(--sidebar-width-collapsed);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 var(--space-32);
+}
+
+.header-title {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* A trilha é o único título da barra fixa: tipografia de kicker mono do sistema,
+   um pouco maior, com o degrau atual em foreground cheio. */
+.header-crumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  min-width: 0;
+  font-family: var(--font-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.crumb {
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: var(--mv-fg3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.crumb--link {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--transition-base);
+}
+
+.crumb--link:hover {
+  color: var(--mv-brand-primary);
+}
+
+.crumb--link:focus-visible {
+  outline: 2px solid var(--mv-brand-primary);
+  outline-offset: 2px;
+}
+
+.crumb--current {
+  color: var(--mv-fg);
+}
+
+.crumb-sep {
+  color: var(--mv-fg3);
+  opacity: 0.6;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.header-role-switch {
+  padding: var(--space-8) var(--space-12);
+  background-color: var(--mv-surface);
+  border: 1px solid var(--mv-line);
+  border-radius: var(--border-radius-sm);
+  color: var(--mv-fg);
+  font-family: var(--font-primary);
+  font-size: 12px;
+  cursor: pointer;
+  transition: border-color var(--transition-base);
+}
+
+.header-role-switch:hover {
+  border-color: var(--mv-brand-primary);
+}
+
+.header-role-switch:focus {
+  outline: none;
+  border-color: var(--mv-brand-primary);
+}
+
+.header-logout {
+  padding: var(--space-8) var(--space-14);
+  background-color: transparent;
+  border: 1px solid var(--mv-line);
+  border-radius: var(--border-radius-sm);
+  color: var(--mv-fg);
+  font-family: var(--font-primary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color var(--transition-base), color var(--transition-base);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.header-logout:hover {
+  border-color: var(--mv-brand-primary);
+  color: var(--mv-brand-primary);
+}
+
+.header-logout:focus {
+  outline: none;
+  border-color: var(--mv-brand-primary);
+}
+
+@media (max-width: 780px) {
+  .header {
+    left: 0;
+    padding: 0 var(--space-16);
+  }
+
+  .header-content {
+    padding: 0;
+  }
+
+  .header-actions {
+    margin-left: auto;
+  }
+
+  .header-role-switch {
+    display: none;
+  }
+}

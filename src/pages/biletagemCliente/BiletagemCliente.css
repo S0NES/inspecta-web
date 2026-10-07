@@ -1,0 +1,238 @@
+.bc-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding: 28px 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 780px) {
+  .bc-container { padding: 20px 18px; }
+}
+
+.bc-card,
+.bc-card:hover {
+  border-color: transparent;
+}
+
+.bc-aviso {
+  margin: 0;
+  font-size: 12px;
+  color: var(--mv-fg3);
+}
+
+.bc-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-28);
+}
+
+.bc-tipo-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-14);
+}
+
+/* ---- Abas de serviço + cadeado ---- */
+.bc-tabsrow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-20);
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--mv-line);
+}
+
+.bc-tabs {
+  display: flex;
+  gap: var(--space-28);
+  flex-wrap: wrap;
+}
+
+.bc-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  padding: 0 0 var(--space-12);
+  margin-bottom: -1px;
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--mv-fg3);
+  transition: color var(--transition-base), border-color var(--transition-base);
+}
+
+.bc-tab:hover {
+  color: var(--mv-fg);
+}
+
+.bc-tab--active {
+  color: var(--mv-fg);
+  border-bottom-color: var(--mv-brand-primary);
+}
+
+.bc-lock {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 10px var(--space-16);
+  margin-bottom: var(--space-8);
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--mv-fg);
+  background: var(--mv-surface);
+  color: var(--mv-fg);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+.bc-lock--open {
+  background: var(--mv-fg);
+  color: var(--mv-surface);
+}
+
+.bc-lockhint {
+  margin: calc(-1 * var(--space-16)) 0 0;
+  font-size: 13.5px;
+  color: var(--mv-fg3);
+}
+
+/* ---- Faixa: grade serviço-selecionado × faixa (2 linhas: sem/com mobília) ---- */
+.bc-faixa-scroll { overflow-x: auto; }
+
+.bc-faixa-grid {
+  display: grid;
+  align-items: stretch;
+  min-width: 820px;
+}
+
+.bc-faixa-head {
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mv-fg3);
+  padding: 0 var(--space-8) var(--space-12);
+  border-bottom: 1px solid var(--mv-line);
+}
+
+.bc-faixa-rowlabel {
+  font-size: 15px;
+  font-weight: 700;
+  padding: var(--space-18) var(--space-8) var(--space-18) 0;
+  border-bottom: 1px solid var(--mv-line);
+}
+
+.bc-faixa-cell {
+  padding: var(--space-18) var(--space-8);
+  border-bottom: 1px solid var(--mv-line);
+}
+
+.bc-cell-display {
+  font-size: 15px;
+  font-weight: 400;
+  font-family: var(--font-secondary);
+  padding: 10px;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--mv-line);
+  background: var(--mv-surface);
+  color: var(--mv-fg3);
+  cursor: pointer;
+}
+
+.bc-cell-display--filled {
+  color: var(--mv-fg);
+  font-weight: 700;
+}
+
+.bc-cell-display--readonly {
+  cursor: default;
+}
+
+.bc-cell-input {
+  font-family: var(--font-primary);
+  font-size: 13.5px;
+  padding: 10px;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--mv-fg);
+  background: var(--mv-surface);
+  color: var(--mv-fg);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bc-cell-input:focus {
+  outline: none;
+}
+
+/* ---- Percentual: painel do serviço selecionado ---- */
+.bc-percent-panel {
+  border: 1px solid var(--mv-line);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-22) var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.bc-percent-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-24);
+}
+
+.bc-percent-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.bc-percent-field-label {
+  font-size: 14.5px;
+  font-weight: 700;
+}
+
+.bc-percent-inputwrap {
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--mv-fg);
+  overflow: hidden;
+}
+
+.bc-percent-inputwrap input {
+  font-family: var(--font-primary);
+  font-size: 13.5px;
+  padding: 10px;
+  border: none;
+  background: var(--mv-surface);
+  color: var(--mv-fg);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bc-percent-inputwrap input:focus {
+  outline: none;
+}
+
+.bc-percent-affix {
+  font-family: var(--font-secondary);
+  color: var(--mv-fg3);
+  padding: 0 var(--space-12);
+  font-size: 13.5px;
+}
+
+.bc-save-row {
+  display: flex;
+  justify-content: flex-end;
+}

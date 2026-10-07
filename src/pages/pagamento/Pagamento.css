@@ -1,0 +1,140 @@
+.pagamento-page {
+  padding: 28px 32px;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.pagamento-standalone {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-32);
+  background-color: var(--mv-bg);
+}
+
+.pagamento-standalone .pagamento-card {
+  max-width: 460px;
+  text-align: center;
+}
+
+.pagamento-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+.pagamento-header h1 {
+  margin: 0;
+}
+
+.pagamento-subtitle {
+  color: var(--mv-fg2);
+  font-size: 14px;
+  margin: var(--space-4) 0 0;
+}
+
+.pagamento-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+
+.pagamento-warn {
+  padding: var(--space-12);
+  border: 1px solid var(--mv-line);
+  border-radius: 6px;
+  background: var(--mv-subtle);
+  font-size: 13px;
+  color: var(--mv-fg2);
+}
+
+.pagamento-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-12);
+  justify-content: center;
+}
+
+.pagamento-spinner {
+  font-size: 13px;
+  color: var(--mv-fg2);
+}
+
+/* ---- PIX transparente (QR Code na própria página) ---- */
+.pagamento-section-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--mv-fg);
+}
+
+.pagamento-section-title--sm {
+  font-size: 15px;
+  color: var(--mv-fg2);
+}
+
+.pagamento-pix,
+.pagamento-cartao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.pagamento-cartao {
+  padding-top: var(--space-12);
+  border-top: 1px solid var(--mv-line);
+}
+
+.pagamento-pix-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-12);
+  align-items: flex-start;
+}
+
+.pagamento-pix-qr {
+  width: 220px;
+  height: 220px;
+  border: 1px solid var(--mv-line);
+  border-radius: 6px;
+  background: #fff;
+  image-rendering: pixelated;
+}
+
+.pagamento-pix-code {
+  display: flex;
+  flex: 1 1 260px;
+  flex-direction: column;
+  gap: var(--space-12);
+  min-width: 0;
+}
+
+.pagamento-pix-code-label {
+  font-size: 13px;
+  color: var(--mv-fg2);
+}
+
+.pagamento-pix-code-text {
+  width: 100%;
+  padding: var(--space-12);
+  border: 1px solid var(--mv-line);
+  border-radius: 6px;
+  background: var(--mv-subtle);
+  color: var(--mv-fg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  resize: none;
+  word-break: break-all;
+}
+
+.pagamento-pix-meta {
+  margin: 0;
+  font-size: 13px;
+  color: var(--mv-fg2);
+}

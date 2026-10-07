@@ -1,0 +1,183 @@
+.imef { display: flex; flex-direction: column; gap: var(--space-12); }
+.imef-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-12);
+}
+.imef-acoes { display: flex; gap: var(--space-8); }
+
+/* ---- Biletagem ---- */
+.imef-biletagem {
+  border-top: 1px solid var(--mv-line);
+  padding-top: var(--space-16);
+  margin-top: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.imef-biletagem-titulo {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.imef-biletagem-aviso {
+  margin: 0;
+  font-size: 12px;
+  color: var(--mv-fg3);
+}
+
+.imef-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--mv-fg3);
+}
+
+.imef-radio-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-12);
+}
+
+.imef-radio-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  border: 1px solid var(--mv-line);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-14);
+  cursor: pointer;
+  transition: border-color var(--transition-base), background-color var(--transition-base);
+}
+
+.imef-radio-card:hover {
+  border-color: var(--mv-brand-primary);
+}
+
+.imef-radio-card:has(.imef-radio-card-input:disabled) {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.imef-radio-card:has(.imef-radio-card-input:disabled):hover {
+  border-color: var(--mv-line);
+}
+
+.imef-radio-card--on {
+  border-color: var(--mv-brand-primary);
+  background-color: rgba(15, 166, 139, 0.04);
+}
+
+/* O radio nativo fica invisível (o card inteiro é o alvo), mas continua focável/clicável. */
+.imef-radio-card-input {
+  position: absolute;
+  top: var(--space-14);
+  left: var(--space-14);
+  margin: 0;
+  opacity: 0;
+}
+
+.imef-radio-card-check {
+  position: absolute;
+  top: var(--space-10);
+  right: var(--space-10);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--border-radius-circle);
+  background-color: var(--mv-brand-primary);
+  color: var(--mv-brand-paper);
+}
+
+.imef-radio-card--on .imef-radio-card-check {
+  display: inline-flex;
+}
+
+.imef-radio-card-icon {
+  display: inline-flex;
+  margin-bottom: var(--space-4);
+  color: var(--mv-fg2);
+}
+
+.imef-radio-card--on .imef-radio-card-icon {
+  color: var(--mv-brand-primary);
+}
+
+.imef-radio-card-t {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--mv-fg);
+}
+
+.imef-radio-card-d {
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--mv-fg3);
+}
+
+.imef-radio-card--on .imef-radio-card-d {
+  color: var(--mv-brand-primary);
+}
+
+.imef-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.imef-pill {
+  border: 1px solid var(--mv-line);
+  background: var(--mv-surface);
+  color: var(--mv-fg);
+  font: inherit;
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.imef-pill--on {
+  background: var(--mv-brand-ink);
+  color: #fff;
+  border-color: var(--mv-brand-ink);
+}
+
+.imef-servico-valores {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  border: 1px solid var(--mv-line-soft);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-12);
+}
+
+.imef-faixa-tabela-wrap { overflow-x: auto; }
+
+.imef-faixa-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.imef-faixa-tabela th,
+.imef-faixa-tabela td {
+  text-align: left;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--mv-line-soft);
+}
+
+.imef-faixa-tabela thead th {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-secondary);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mv-fg3);
+  background: var(--mv-bg);
+  border-bottom: 1px solid var(--mv-line);
+}
+
+.imef-faixa-tabela .form-input { max-width: 140px; }
+.imef-faixa-step td { color: var(--mv-fg3); font-style: italic; }

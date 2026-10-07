@@ -1,0 +1,91 @@
+.laudos-container {
+  padding: 28px 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 780px) {
+  .laudos-container {
+    padding: 20px 18px;
+  }
+}
+
+.laudos-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-32);
+  gap: var(--space-20);
+}
+
+.laudos-origem-tabs {
+  margin-bottom: var(--space-22);
+}
+
+.laudo-details {
+  font-size: 13px;
+  color: var(--mv-fg2);
+  font-family: var(--font-primary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.laudo-action-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.laudo-separator {
+  color: var(--mv-fg3);
+  font-family: var(--font-secondary);
+  font-size: 13px;
+}
+
+.laudo-warning {
+  padding: var(--space-12) var(--space-14);
+  background-color: rgba(15, 166, 139, 0.06);
+  border-left: 2px solid #0FA68B;
+  border-radius: var(--border-radius-sm);
+  font-size: 13px;
+  color: #0FA68B;
+  line-height: 1.4;
+}
+
+.laudo-chevron {
+  color: var(--mv-fg3);
+  display: inline-flex;
+}
+
+.laudo-row:hover .laudo-chevron,
+.laudo-chevron--open {
+  color: var(--mv-brand-primary);
+}
+
+.laudo-contest-hint {
+  margin: 0 0 var(--space-16);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--mv-fg2);
+}
+
+.laudo-contest-texto {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.laudo-detail {
+  gap: var(--space-12);
+}
+
+@media (max-width: 780px) {
+  .laudo-action-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .laudo-separator {
+    display: none;
+  }
+}

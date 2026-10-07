@@ -1,0 +1,438 @@
+.extrato-container {
+  padding: 28px 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 780px) {
+  .extrato-container {
+    padding: 20px 18px;
+  }
+}
+
+.extrato-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-24);
+  gap: var(--space-20);
+}
+
+.extrato-subtitle {
+  color: var(--mv-fg2);
+  margin: var(--space-8) 0 0 0;
+  font-size: 14px;
+  line-height: 1.4;
+  max-width: 62ch;
+}
+
+.extrato-section {
+  margin-bottom: var(--space-32);
+}
+
+.extrato-totals {
+  margin-bottom: var(--space-32);
+}
+
+.totals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  border: 1px solid var(--mv-line);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+}
+
+.total-item {
+  border: none;
+  border-radius: 0;
+  padding: var(--space-22);
+  text-align: center;
+  transition: background-color 120ms ease;
+}
+
+.total-item:hover {
+  background-color: var(--mv-line-soft);
+}
+
+.total-label {
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mv-fg2);
+  margin-bottom: var(--space-8);
+}
+
+.total-value {
+  font-family: var(--font-primary);
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--mv-fg);
+}
+
+.downloads-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  margin-bottom: var(--space-20);
+}
+
+.download-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-10);
+}
+
+.extract-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.extract-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 1fr;
+  gap: var(--space-16);
+  padding: var(--space-14) var(--space-16);
+  border-bottom: 1px solid var(--mv-line-soft);
+  background-color: var(--mv-line-soft);
+}
+
+.extract-header > div {
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mv-fg2);
+}
+
+.extract-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 1fr;
+  gap: var(--space-16);
+  padding: var(--space-14) var(--space-16);
+  border-bottom: 1px solid var(--mv-line-soft);
+  align-items: center;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.extract-row:hover {
+  background-color: rgba(15, 166, 139, 0.06);
+  border-left: 2px solid #0FA68B;
+  padding-left: calc(var(--space-16) - 2px);
+}
+
+.extract-row:last-child {
+  border-bottom: none;
+}
+
+.extract-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mv-fg);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.extract-text {
+  font-size: 13px;
+  color: var(--mv-fg);
+  margin: 0;
+  font-family: var(--font-secondary);
+}
+
+@media (max-width: 780px) {
+  .totals-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0;
+  }
+
+  .total-item {
+    padding: var(--space-14);
+  }
+
+  .total-value {
+    font-size: 18px;
+  }
+
+  .download-buttons {
+    flex-direction: column;
+  }
+
+  .download-buttons > button {
+    width: 100%;
+  }
+
+  .extract-header {
+    display: none;
+  }
+
+  .extract-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    padding: var(--space-12);
+  }
+
+  .extract-row > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .extract-row > div::before {
+    font-family: var(--font-secondary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mv-fg2);
+    margin-bottom: var(--space-4);
+  }
+
+  .extract-col-1::before {
+    content: 'PERÍODO';
+  }
+
+  .extract-col-2::before {
+    content: 'VISITAS';
+  }
+
+  .extract-col-3::before {
+    content: 'VALOR';
+  }
+
+  .extract-col-4::before {
+    content: 'STATUS';
+  }
+}
+
+.extrato-header-actions {
+  display: flex;
+  gap: var(--space-12);
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.extrato-filtrar-btn {
+  position: relative;
+}
+
+.extrato-filtro-contador {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--mv-brand-primary);
+  color: var(--mv-brand-paper);
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+}
+
+.extrato-filtro-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.extrato-filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  min-width: 0;
+}
+
+.extrato-kpis {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  margin-bottom: var(--space-24);
+}
+
+.extrato-kpi {
+  padding: var(--space-22);
+}
+
+.extrato-kpi-label {
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mv-brand-primary);
+  margin-bottom: var(--space-8);
+}
+
+.extrato-kpi-value {
+  font-family: var(--font-primary);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--mv-fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.extrato-paginacao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-12);
+  margin-top: var(--space-16);
+}
+
+.extrato-month-caption {
+  margin: var(--space-16) 0 0;
+  font-size: 12px;
+  color: var(--mv-fg3);
+}
+
+@media (max-width: 780px) {
+  .extrato-kpis {
+    grid-template-columns: 1fr;
+  }
+
+  .extrato-header-actions {
+    flex-wrap: wrap;
+  }
+}
+
+/* ---- Recorte granular por vistoria (fluxo B2B) ---- */
+.extrato-granular-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) 1fr;
+  gap: var(--space-20);
+  align-items: start;
+}
+
+@media (max-width: 980px) {
+  .extrato-granular-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.extrato-field-label {
+  display: block;
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mv-fg2);
+  margin-bottom: var(--space-8);
+}
+
+.extrato-period-card .react-calendar {
+  width: 100%;
+  border: 1px solid var(--mv-line);
+  border-radius: var(--border-radius-md);
+  font-family: inherit;
+  background: var(--mv-bg, #fff);
+}
+
+.extrato-period-summary {
+  margin: var(--space-12) 0 0;
+  font-size: 13px;
+  color: var(--mv-fg2);
+}
+
+.extrato-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  align-items: center;
+  margin-bottom: var(--space-16);
+}
+
+.extrato-toolbar .form-input,
+.extrato-toolbar .form-select {
+  flex: 1 1 180px;
+  min-width: 160px;
+}
+
+.extrato-clear-btn {
+  flex: 0 0 auto;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.extrato-invoice-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-16);
+}
+
+.extrato-invoice-total {
+  font-size: 13px;
+  color: var(--mv-fg2);
+}
+
+.extrato-checkout-note {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  flex-wrap: wrap;
+  padding: var(--space-12);
+  margin-bottom: var(--space-16);
+  background: var(--mv-subtle);
+  border-radius: var(--border-radius-md);
+  font-size: 13px;
+}
+
+.extrato-checkout-pending {
+  color: var(--mv-fg2);
+}
+
+.extrato-link {
+  color: var(--mv-accent, #D62F2F);
+  text-decoration: underline;
+  font-size: 13px;
+}
+
+.extrato-vistoria-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.extrato-vistoria-tipo {
+  font-size: 12px;
+  color: var(--mv-fg2);
+}
+
+/* ---- Fatura consolidada (B2B pós-pago) ---- */
+.extrato-faturas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  margin-top: var(--space-12);
+}
+
+.extrato-faturas-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--mv-fg);
+}
+
+.extrato-faturas-subtitle {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--mv-fg2);
+}
+
+.extrato-faturas-resumo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-12);
+}

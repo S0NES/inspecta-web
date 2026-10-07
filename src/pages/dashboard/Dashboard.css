@@ -1,0 +1,333 @@
+.dashboard-container {
+  padding: 28px 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 780px) {
+  .dashboard-container {
+    padding: 20px 18px;
+  }
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-32);
+  gap: var(--space-20);
+}
+
+.dashboard-subtitle {
+  color: var(--mv-fg2);
+  font-size: 14px;
+  margin-top: var(--space-8);
+}
+
+@media (max-width: 780px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard-header button {
+    width: 100%;
+  }
+}
+
+/* Metrics Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  margin-bottom: var(--space-32);
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.metric-label {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-secondary);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mv-fg3);
+}
+
+.metric-value {
+  font-size: 34px;
+  font-weight: 800;
+  font-family: var(--font-primary);
+  letter-spacing: -0.02em;
+  color: var(--mv-fg);
+  line-height: 1.1;
+}
+
+.metric-change {
+  font-size: 12px;
+  font-family: var(--font-primary);
+  color: var(--mv-fg2);
+}
+
+/* Sections */
+.dashboard-section {
+  margin-bottom: var(--space-32);
+}
+
+/* Staff-only: cards de métricas de envio/solicitações que abrem modais com gráfico */
+.staff-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.staff-metric {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  cursor: pointer;
+}
+
+.staff-metric:focus-visible {
+  outline: 2px solid var(--mv-brand-primary);
+  outline-offset: 4px;
+}
+
+.card:has(.staff-metric:hover) {
+  border-color: var(--mv-brand-primary);
+}
+
+/* Grupo de dois gráficos no modal de solicitações */
+.dashboard-chart-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.dashboard-chart h3 {
+  margin-bottom: var(--space-12);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-14);
+}
+
+.section-count {
+  font-size: 12px;
+  color: var(--mv-fg3);
+  font-family: var(--font-secondary);
+}
+
+/* Queue Table */
+.queue-table {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.queue-header {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1.2fr 1fr;
+  gap: var(--space-16);
+  padding: var(--space-12) 0;
+  border-bottom: 1px solid var(--mv-line);
+  margin-bottom: var(--space-8);
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-secondary);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mv-fg3);
+}
+
+.queue-col-1,
+.queue-col-2,
+.queue-col-3,
+.queue-col-4 {
+  display: flex;
+  align-items: center;
+}
+
+.queue-row {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1.2fr 1fr;
+  gap: var(--space-16);
+  padding: var(--space-14) 0;
+  border-bottom: 1px solid var(--mv-line-soft);
+  align-items: center;
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+}
+
+.queue-row:hover {
+  background-color: rgba(15, 166, 139, 0.06);
+  border-bottom-color: var(--mv-brand-primary);
+  cursor: pointer;
+}
+
+.queue-row:focus-visible {
+  outline: 2px solid var(--mv-brand-primary);
+  outline-offset: -2px;
+}
+
+.queue-urgent {
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--mv-brand-primary);
+}
+
+.queue-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-32) var(--space-16);
+  color: var(--mv-fg2);
+  font-family: var(--font-primary);
+  font-size: 13px;
+  text-align: center;
+}
+
+.queue-title {
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  color: var(--mv-fg);
+  margin-bottom: var(--space-4);
+}
+
+.queue-subtitle {
+  font-size: 12px;
+  color: var(--mv-fg2);
+  font-family: var(--font-primary);
+}
+
+.queue-text {
+  font-size: 13px;
+  color: var(--mv-fg2);
+  font-family: var(--font-primary);
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .queue-header,
+  .queue-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .queue-header {
+    display: none;
+  }
+
+  .queue-col-1,
+  .queue-col-2,
+  .queue-col-3,
+  .queue-col-4 {
+    display: block;
+  }
+
+  .queue-col-2::before,
+  .queue-col-3::before,
+  .queue-col-4::before {
+    font-family: var(--font-secondary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mv-fg3);
+    margin-bottom: var(--space-4);
+    display: block;
+  }
+
+  .queue-col-2::before {
+    content: 'VISTORIADOR';
+  }
+
+  .queue-col-3::before {
+    content: 'DATA · HORA';
+  }
+
+  .queue-col-4::before {
+    content: 'STATUS';
+  }
+}
+
+/* SLA Section */
+.sla-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+.sla-info {
+  flex: 1;
+}
+
+.sla-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-secondary);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mv-fg3);
+  margin-bottom: var(--space-6);
+}
+
+.sla-value {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  color: var(--mv-fg);
+  margin: 0;
+}
+
+/* Activity List */
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.activity-item {
+  display: flex;
+  gap: var(--space-12);
+  align-items: flex-start;
+}
+
+.activity-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--mv-brand-primary);
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.activity-info {
+  flex: 1;
+}
+
+.activity-action {
+  font-size: 13px;
+  font-family: var(--font-primary);
+  color: var(--mv-fg);
+  margin: 0 0 var(--space-4) 0;
+}
+
+.activity-time {
+  font-size: 11px;
+  font-family: var(--font-secondary);
+  color: var(--mv-fg3);
+  margin: 0;
+}

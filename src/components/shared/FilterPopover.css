@@ -1,0 +1,66 @@
+/* Botão "Filtros" — casca fina sobre .btn--secondary; só acrescenta o acento
+   quando há filtro ativo e o contador ao lado do rótulo. */
+.filter-trigger {
+  flex-shrink: 0;
+}
+
+.filter-trigger--active {
+  border-color: var(--mv-brand-primary);
+  color: var(--mv-brand-primary);
+}
+
+.filter-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 var(--space-4);
+  border-radius: var(--border-radius-circle);
+  background-color: var(--mv-brand-primary);
+  color: var(--mv-brand-paper);
+  font-family: var(--font-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Corpo do modal de filtros */
+.filter-panel-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+/* Campos do modal não carregam a margem inferior padrão dos formulários. */
+.filter-panel-body .form-group {
+  margin-bottom: 0;
+}
+
+/* Inputs/selects ocupam a largura inteira do modal (box-sizing: border-box global). */
+.filter-panel-body .form-input,
+.filter-panel-body .form-select {
+  width: 100%;
+}
+
+/* Grupos de filtro dentro do modal */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.filter-group-label {
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mv-fg3);
+}
+
+.filter-group-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+}

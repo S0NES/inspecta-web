@@ -1,0 +1,338 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background-color: var(--mv-nav);
+  color: var(--mv-navfg);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--mv-line);
+  transition: width var(--transition-base);
+  z-index: 100;
+  /* A barra é uma coluna flex de altura fixa (header + nav + footer). Só a .sidebar-nav
+     rola — deixar overflow aqui também criava um segundo scrollbar sobre a área escura. */
+  overflow: hidden;
+}
+
+.sidebar--collapsed {
+  width: var(--sidebar-width-collapsed);
+}
+
+.sidebar-header {
+  padding: var(--space-12) var(--space-16);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  min-height: var(--header-height);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar--collapsed .sidebar-header {
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-10);
+  padding: var(--space-12) var(--space-8);
+}
+
+.sidebar-logo {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  display: block;
+}
+
+.sidebar-logo-mark {
+  width: 34px;
+  height: 34px;
+  display: none;
+}
+
+/* Alterna qual logo aparece sem trocar o `src` (evita o flash de carregamento). */
+.sidebar--collapsed .sidebar-logo {
+  display: none;
+}
+
+.sidebar--collapsed .sidebar-logo-mark {
+  display: block;
+}
+
+/* Hambúrguer: mesma affordance nos dois estados, só muda para "X" quando expandido. */
+.sidebar-hamburger {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  color: var(--mv-navfg);
+  cursor: pointer;
+  transition: background-color var(--transition-base);
+}
+
+.sidebar-hamburger:hover {
+  background-color: rgba(15, 166, 139, 0.16);
+  color: var(--mv-brand-primary);
+}
+
+.sidebar-hamburger:focus-visible {
+  outline: 2px solid var(--mv-brand-primary);
+  outline-offset: 2px;
+}
+
+.hamburger-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-nav {
+  flex: 1;
+  min-height: 0; /* permite encolher abaixo do conteúdo p/ rolar dentro da coluna flex */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-12);
+  overflow-y: auto;
+  /* A sidebar é sempre ink-dark; o thumb do tema claro sumiria. Força a variante clara. */
+  scrollbar-color: rgba(255, 255, 255, 0.20) transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.20);
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.34);
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-12) var(--space-14);
+  background: none;
+  border: none;
+  border-left: 2px solid transparent;
+  color: var(--mv-navfg);
+  cursor: pointer;
+  font-family: var(--font-primary);
+  font-size: 13px;
+  font-weight: 500;
+  transition: background-color var(--transition-base), border-left-color var(--transition-base);
+  white-space: nowrap;
+  text-align: left;
+}
+
+.nav-item:hover {
+  background-color: rgba(15, 166, 139, 0.16);
+  border-left-color: var(--mv-brand-primary);
+  color: var(--mv-navfg);
+}
+
+/* usoDoVermelho = Marcante (FRONTEND.md §7): o item ativo ganha fundo vermelho cheio,
+   não só a barra de 2px. Peso 600 no rótulo para segurar a legibilidade sobre o acento. */
+.nav-item--active {
+  background-color: var(--mv-brand-primary);
+  border-left-color: var(--mv-brand-primary);
+  color: var(--mv-brand-paper);
+  font-weight: 600;
+}
+
+.nav-item--active:hover {
+  background-color: var(--mv-brand-primary);
+  color: var(--mv-brand-paper);
+}
+
+.nav-icon {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.nav-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-footer {
+  position: relative;
+  padding: var(--space-12);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ---- Perfil do usuário (rodapé) ---- */
+.sidebar-profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+  width: 100%;
+  padding: var(--space-8);
+  background: none;
+  border: none;
+  border-radius: var(--border-radius-md);
+  color: var(--mv-navfg);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-primary);
+  transition: background-color var(--transition-base);
+}
+
+/* Mesma convenção dos itens de nav: fundo vermelho a 16% no hover. */
+.sidebar-profile:hover {
+  background-color: rgba(15, 166, 139, 0.16);
+}
+
+.sidebar-profile:focus-visible {
+  outline: 2px solid var(--mv-brand-primary);
+  outline-offset: 2px;
+}
+
+.sidebar--collapsed .sidebar-profile {
+  justify-content: center;
+  padding: var(--space-8) 0;
+}
+
+/* O manual reserva o vermelho para pontuação, nunca preenchimento — por isso o avatar
+   é uma superfície neutra sobre a sidebar ink, com hairline no lugar de fundo cheio. */
+.profile-avatar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--border-radius-circle);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--mv-navfg);
+  font-family: var(--font-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: border-color var(--transition-base);
+}
+
+/* Regra do vermelho: todo alvo clicável ganha acento vermelho no hover. */
+.sidebar-profile:hover .profile-avatar {
+  border-color: var(--mv-brand-primary);
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  /* Sem crescer: o chevron encosta no texto em vez de ser empurrado para a
+     borda da sidebar. Ainda pode encolher para o nome truncar com reticências. */
+  flex: 0 1 auto;
+}
+
+.profile-name {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-transform: capitalize;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-role {
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: rgba(255, 255, 255, 0.55);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-caret {
+  flex-shrink: 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+  transform: rotate(180deg);
+  transition: transform var(--transition-base);
+}
+
+.profile-caret--open {
+  transform: rotate(0deg);
+}
+
+/* Menu que sobe a partir do bloco de perfil */
+.profile-menu {
+  position: absolute;
+  bottom: calc(100% - var(--space-4));
+  left: var(--space-12);
+  right: var(--space-12);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4);
+  background-color: var(--mv-surface);
+  border: 1px solid var(--mv-line);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  z-index: 10;
+}
+
+.profile-menu-email {
+  padding: var(--space-8) var(--space-12);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--mv-line-soft);
+  font-family: var(--font-secondary);
+  font-size: 11px;
+  color: var(--mv-fg3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-menu-item {
+  padding: var(--space-10) var(--space-12);
+  background: none;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  color: var(--mv-fg);
+  font-family: var(--font-primary);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--transition-base);
+}
+
+.profile-menu-item:hover {
+  background-color: var(--mv-line-soft);
+  color: var(--mv-brand-primary);
+}
+
+.profile-menu-item--danger {
+  color: var(--mv-brand-primary);
+}
+
+@media (max-width: 780px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform var(--transition-base);
+    width: var(--sidebar-width);
+    z-index: 200;
+  }
+
+  .sidebar.sidebar--open {
+    transform: translateX(0);
+  }
+}
+
+.nav-group { display: flex; flex-direction: column; }
+.nav-group-header { width: 100%; }
+.nav-group-caret { margin-left: auto; font-size: 11px; transition: transform 0.15s ease; }
+.nav-group-caret--open { transform: rotate(180deg); }
+.nav-group-children { display: flex; flex-direction: column; }
+.nav-item--child { padding-left: 34px; font-size: 0.92em; opacity: 0.9; }

@@ -1,0 +1,96 @@
+.intg-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding: 28px 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 780px) {
+  .intg-container { padding: 20px 18px; }
+}
+
+/* Cabeçalho: título (InfoHint) à esquerda, botão "Filtros" à direita — mesmo padrão de Tipagem. */
+.intg-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-12);
+}
+
+.intg-empty { color: var(--mv-fg2); font-size: 13px; padding: var(--space-8) 0; margin: 0; max-width: 68ch; }
+
+/* Título + o "i" vermelho (aviso de provedores não configurados) lado a lado. */
+.intg-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.filter-group-chips .filter-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-14);
+  min-height: 34px;
+  border: 1px solid var(--mv-line);
+  background: var(--mv-surface);
+  color: var(--mv-fg);
+  font-size: 13px;
+  font-family: var(--font-primary);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+}
+
+.filter-group-chips .filter-chip--active {
+  background: var(--mv-danger);
+  color: var(--mv-brand-paper);
+  border-color: var(--mv-danger);
+}
+
+.intg-table {
+  display: flex;
+  flex-direction: column;
+  /* Última faixa fixa: o header vazio e o botão "Re-tentar" ocupam a mesma largura,
+     senão cada .intg-row (grid independente) calcula `auto` diferente e os rótulos
+     não caem sobre os valores. */
+  --intg-cols: minmax(0, 1.6fr) minmax(0, 0.9fr) minmax(0, 1.1fr) minmax(0, 0.9fr) minmax(0, 1.3fr) 7.25rem;
+}
+.intg-row {
+  display: grid;
+  grid-template-columns: var(--intg-cols);
+  gap: var(--space-12);
+  align-items: center;
+  padding: var(--space-10) 0;
+  border-bottom: 1px solid var(--mv-line);
+  font-size: 13px;
+}
+.intg-row > * {
+  min-width: 0;
+  text-align: left;
+}
+.intg-row:last-child { border-bottom: none; }
+.intg-row--head {
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mv-fg2);
+}
+.intg-recurso { font-family: var(--font-secondary); font-size: 12px; text-transform: capitalize; }
+.intg-recurso-nome { font-family: var(--font-primary); text-transform: none; color: var(--mv-fg2); }
+.intg-mono { font-family: var(--font-secondary); font-size: 11px; color: var(--mv-fg2); white-space: nowrap; }
+.intg-erro { font-size: 11px; color: var(--mv-danger); margin-left: var(--space-4); }
+.intg-acao {
+  justify-self: end;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.intg-paginacao { justify-content: center; }
+
+@media (max-width: 900px) {
+  .intg-row { grid-template-columns: 1fr; gap: var(--space-4); }
+  .intg-row--head { display: none; }
+}

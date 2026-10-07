@@ -1,0 +1,58 @@
+# ATENÇÃO: o deploy de produção do inspecta-web passou a ser Cloudflare Pages (ver
+# DEPLOY_DOKPLOY.md § Cloudflare Pages), não este compose/Traefik/Dokploy. Este
+# arquivo continua funcionando para quem quiser rodar o inspecta-web via Docker
+# localmente ou como alternativa self-hosted ao Pages.
+services:
+  inspecta-web:
+    image: ghcr.io/inspecta-real-estate-solutions/inspecta-web:${IMAGE_TAG:-latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL}
+    environment:
+      TZ: ${TZ:-America/Sao_Paulo}
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: ${WEB_MEM_LIMIT:-128m}
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - wget -qO- http://127.0.0.1:80/ >/dev/null 2>&1 || exit 1
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+    labels:
+      traefik.enable: true
+      traefik.http.routers.inspecta-web.rule: Host(`${APP_HOST}`)
+      traefik.http.routers.inspecta-web.entrypoints: ${TRAEFIK_ENTRYPOINT:-websecure}
+      traefik.http.routers.inspecta-web.priority: 1
+      traefik.http.routers.inspecta-web.tls: true
+      traefik.http.routers.inspecta-web.tls.certresolver: ${TRAEFIK_CERTRESOLVER:-letsencrypt}
+      traefik.http.routers.inspecta-web.service: inspecta-web
+      traefik.http.services.inspecta-web.loadbalancer.server.port: 80
+      traefik.http.services.inspecta-web.loadbalancer.healthcheck.path: /
+      traefik.http.services.inspecta-web.loadbalancer.healthcheck.interval: 15s
+    restart: unless-stopped
+    networks:
+      - inspecta-web_default
+      - postgresql-ye3u_default
+      - rabbitmq-tkwq_default
+      - inspecta-net
+networks:
+  inspecta-web_default:
+    external: true
+  postgresql-ye3u_default:
+    external: true
+  rabbitmq-tkwq_default:
+    external: true
+  inspecta-net:
+    external: true

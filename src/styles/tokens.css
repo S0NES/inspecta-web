@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  /* Color brand (immutable) */
+  --mv-brand-ink: #0F0F0F;
+  --mv-danger: #D62F2F;
+  --mv-brand-paper: #FFFFFF;
+  --mv-brand-primary: #0FA68B;
+  --mv-brand-gray: #E3E3E3;
+  --mv-brand-accent: #FFB020;
+
+  /* Red — brightness variants (genuinely darker, blended toward black).
+     -100 is the full-brightness base (same value as --mv-brand-primary). */
+  --mv-brand-primary-100: #0FA68B;
+  --mv-brand-primary-50: #085346;
+  --mv-brand-primary-25: #042A23;
+
+  /* Red — opacity variants (same hue, alpha channel; composites over whatever is behind it). */
+  --mv-brand-primary-alpha-100: rgba(15, 166, 139, 1);
+  --mv-brand-primary-alpha-50: rgba(15, 166, 139, 0.5);
+  --mv-brand-primary-alpha-25: rgba(15, 166, 139, 0.25);
+
+  /* Cyan (complementary) — brightness variants (genuinely darker, blended toward black). */
+  --mv-brand-accent-100: #FFB020;
+  --mv-brand-accent-50: #805810;
+  --mv-brand-accent-25: #402C08;
+
+  /* Cyan (complementary) — opacity variants (same hue, alpha channel). */
+  --mv-brand-accent-alpha-100: rgba(255, 176, 32, 1);
+  --mv-brand-accent-alpha-50: rgba(255, 176, 32, 0.5);
+  --mv-brand-accent-alpha-25: rgba(255, 176, 32, 0.25);
+
+  /* Theme variables - Light mode */
+  --mv-bg: #FFFFFF;
+  --mv-surface: #FFFFFF;
+  --mv-fg: #0F0F0F;
+  --mv-fg2: rgba(15, 15, 15, 0.68);
+  --mv-fg3: rgba(15, 15, 15, 0.45);
+  --mv-line: rgba(15, 15, 15, 0.12);
+  --mv-line-soft: rgba(15, 15, 15, 0.08);
+  --mv-nav: #0F0F0F;
+  --mv-navfg: #FFFFFF;
+  --mv-subtle: #E3E3E3;
+  --mv-desk: #E3E3E3;
+
+  /* Typography — generically named so swapping in the real PP Neue Montreal /
+     PP Neue Montreal Mono files later is a one-file, one-line edit with zero
+     call-site changes. Inter/Space Mono are the current fallback fonts. */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-secondary: 'Space Mono', monospace;
+
+  /* Spacing (base 4px) */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-14: 14px;
+  --space-16: 16px;
+  --space-18: 18px;
+  --space-20: 20px;
+  --space-22: 22px;
+  --space-24: 24px;
+  --space-26: 26px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-40: 40px;
+
+  /* Borders */
+  --border-radius-sm: 4px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 8px;
+  --border-radius-xl: 18px;
+  --border-radius-circle: 50%;
+
+  /* Shadows */
+  --shadow-elevation: 0 16px 38px rgba(15, 15, 15, 0.16);
+
+  /* Overlay */
+  --overlay-dark: rgba(15, 15, 15, 0.4);
+
+  /* Transitions */
+  --transition-fast: 120ms ease;
+  --transition-base: 150ms ease;
+  --transition-slow: 180ms ease;
+  --transition-props: background, color, border-color, opacity, width;
+
+  /* Layout */
+  --header-height: 62px;
+  --sidebar-width: 250px;
+  --sidebar-width-collapsed: 72px;
+
+  /* Scrollbar (light) */
+  --scrollbar-size: 10px;
+  --scrollbar-thumb: rgba(15, 15, 15, 0.22);
+  --scrollbar-thumb-hover: rgba(15, 15, 15, 0.40);
+}
+
+/* Dark mode - on html element where data-theme is set */
+html[data-theme='dark'],
+body[data-theme='dark'] {
+  --mv-bg: #121212;
+  --mv-surface: #181818;
+  --mv-fg: #FFFFFF;
+  --mv-fg2: rgba(255, 255, 255, 0.72);
+  --mv-fg3: rgba(255, 255, 255, 0.45);
+  --mv-line: rgba(255, 255, 255, 0.14);
+  --mv-line-soft: rgba(255, 255, 255, 0.08);
+  --mv-nav: #000000;
+  --mv-navfg: #FFFFFF;
+  --mv-subtle: #242424;
+  --mv-desk: #0A0A0A;
+  --overlay-dark: rgba(0, 0, 0, 0.6);
+
+  /* Scrollbar (dark) */
+  --scrollbar-thumb: rgba(255, 255, 255, 0.18);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.34);
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: var(--font-primary);
+  background-color: var(--mv-bg);
+  color: var(--mv-fg);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  transition: background-color var(--transition-slow), color var(--transition-slow);
+}
+
+/* Scrollbars — thin, quiet, theme-aware. Track stays invisible; the thumb is a
+   padded pill (border + background-clip trick) that darkens on hover. Firefox
+   reads the two-value `scrollbar-color` shorthand; WebKit/Blink use the pseudo-
+   elements. Applied broadly so every scroll container matches (main, dialogs,
+   tables, the sidebar nav overrides this locally for its dark surface). */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Typography utilities */
+.type-h1-page {
+  font-family: var(--font-primary);
+  font-size: clamp(25px, 3.4vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+.type-h1-hero {
+  font-family: var(--font-primary);
+  font-size: clamp(26px, 3.4vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+.type-h2 {
+  font-family: var(--font-primary);
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.type-h3 {
+  font-family: var(--font-primary);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.type-title {
+  font-family: var(--font-primary);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.type-body {
+  font-family: var(--font-primary);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.type-body-medium {
+  font-family: var(--font-primary);
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.type-metric-large {
+  font-family: var(--font-primary);
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.type-kicker {
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+.type-label {
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+.type-mono {
+  font-family: var(--font-secondary);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.type-chip {
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+/* Animation keyframes */
+@keyframes mvfade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-mvfade {
+  animation: mvfade 180ms ease forwards;
+}
+
+/* Layout utilities */
+.container-page {
+  padding: 28px 32px;
+}
+
+@media (max-width: 780px) {
+  .container-page {
+    padding: 20px 18px;
+  }
+}
+
+/* Responsive utilities */
+.hide-mobile {
+  display: none;
+}
+
+@media (min-width: 781px) {
+  .hide-mobile {
+    display: block;
+  }
+}
+
+.hide-desktop {
+  display: block;
+}
+
+@media (min-width: 781px) {
+  .hide-desktop {
+    display: none;
+  }
+}

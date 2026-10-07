@@ -1,0 +1,1 @@
+export { Tipagem } from './Tipagem';

@@ -1,0 +1,393 @@
+.property-wizard-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  padding: 28px 32px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+@media (max-width: 780px) {
+  .property-wizard-layout {
+    padding: 20px 18px;
+    gap: 20px;
+  }
+}
+
+.property-wizard-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Wizard Steps */
+.pw-steps {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+  margin-bottom: 8px;
+}
+
+/* O passo ativo ocupa mais espaço; os demais encolhem e os já concluídos
+   encolhem ainda mais ("conforme vai passando diminuindo"). */
+.pw-step {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  position: relative;
+  opacity: 0.6;
+  transition: flex-grow 160ms ease, opacity 160ms ease;
+}
+
+.pw-step--active {
+  flex-grow: 1.8;
+  opacity: 1;
+}
+
+.pw-step--done {
+  flex-grow: 0.7;
+  opacity: 0.4;
+}
+
+.pw-step-line {
+  height: 2px;
+  background-color: var(--mv-line);
+  transition: background-color 120ms ease;
+}
+
+.pw-step--done .pw-step-line {
+  background-color: var(--mv-fg);
+}
+
+.pw-step--active .pw-step-line {
+  background-color: var(--mv-brand-primary);
+}
+
+.pw-step-number {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-secondary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mv-fg3);
+  transition: color 120ms ease, font-size 160ms ease;
+}
+
+.pw-step--active .pw-step-number {
+  font-size: 11px;
+  color: var(--mv-brand-primary);
+}
+
+.pw-step-label {
+  font-size: 10px;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  color: var(--mv-fg2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 120ms ease, font-size 160ms ease;
+}
+
+.pw-step--active .pw-step-label {
+  font-size: 12.5px;
+}
+
+.pw-step--active .pw-step-label {
+  color: var(--mv-fg);
+}
+
+/* Card Content */
+.wizard-card {
+  padding: 32px;
+  min-height: 400px;
+}
+
+@media (max-width: 780px) {
+  .wizard-card {
+    padding: 20px 16px;
+    min-height: auto;
+  }
+}
+
+.pw-step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* display:flex above would otherwise override the UA [hidden] { display: none }. */
+.pw-step-content[hidden] {
+  display: none;
+}
+
+.pw-step-content h2 {
+  margin: 0;
+}
+
+.wizard-description {
+  font-size: 13px;
+  color: var(--mv-fg2);
+  margin: 0;
+}
+
+/* Form Section */
+.form-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 780px) {
+  .form-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-section > div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Campos que ocupam a linha inteira da grade de formulário. */
+.pw-full {
+  grid-column: 1 / -1;
+}
+
+.agency-wizard-layout {
+  grid-template-columns: 1fr;
+  max-width: 960px;
+}
+
+
+.pw-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.pw-chip {
+  border: 1px solid var(--mv-line);
+  background: var(--mv-surface);
+  color: var(--mv-fg);
+  font: inherit;
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 120ms ease, background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.pw-chip:hover {
+  border-color: var(--mv-brand-ink);
+}
+
+.pw-chip:active {
+  transform: scale(0.98);
+}
+
+.pw-chip--on {
+  background: var(--mv-brand-ink);
+  color: #fff;
+  border-color: var(--mv-brand-ink);
+}
+
+.pw-field-hint {
+  font-size: 11px;
+  color: var(--mv-fg3);
+  margin: var(--space-4) 0 0;
+  line-height: 1.4;
+}
+
+/* Linha "rótulo + botão de info" acima de um campo. */
+.pw-label-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+/* Título do passo + botão de info com a descrição (antes um <p> solto). */
+.pw-step-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  margin-bottom: var(--space-16);
+}
+
+.pw-step-title h2 {
+  margin: 0;
+}
+
+/* Erro de campo — mesmo lugar da dica, mas em vermelho. */
+.pw-field-error {
+  font-size: 11px;
+  color: var(--mv-brand-primary);
+  margin: var(--space-4) 0 0;
+  line-height: 1.4;
+}
+
+/* Busca de logradouro no ViaCEP */
+.pw-rua-busca {
+  position: relative;
+}
+
+.pw-rua-resultados {
+  margin-top: var(--space-6);
+  border: 1px solid var(--mv-line);
+  border-radius: var(--border-radius-sm);
+  background: var(--mv-surface);
+  overflow: hidden;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.pw-rua-status {
+  padding: var(--space-10) var(--space-12);
+  font-size: 12px;
+  color: var(--mv-fg3);
+  margin: 0;
+}
+
+.pw-rua-opcao {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  padding: var(--space-10) var(--space-12);
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--mv-line-soft);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.pw-rua-opcao:last-child {
+  border-bottom: none;
+}
+
+.pw-rua-opcao:hover,
+.pw-rua-opcao:focus-visible {
+  background-color: rgba(15, 166, 139, 0.08);
+  outline: none;
+}
+
+.pw-rua-opcao-rua {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mv-fg);
+}
+
+.pw-rua-opcao-meta {
+  font-size: 11px;
+  font-family: var(--font-secondary);
+  color: var(--mv-fg3);
+}
+
+/* Footer Navigation */
+.pw-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--mv-line);
+}
+
+.pw-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 780px) {
+  .pw-footer {
+    flex-direction: column;
+  }
+
+  .pw-footer-left {
+    width: 100%;
+  }
+
+  .pw-footer button {
+    width: 100%;
+  }
+}
+
+/* Aside Summary */
+.pw-aside {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 80px;
+  height: fit-content;
+}
+
+@media (max-width: 1140px) {
+  .pw-aside {
+    position: static;
+    top: 0;
+  }
+}
+
+.pw-summary {
+  background-color: var(--mv-surface);
+  border: 1px solid var(--mv-line);
+  border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pw-summary-title {
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-primary);
+  color: var(--mv-fg);
+  margin: 0;
+}
+
+.pw-summary-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--mv-line-soft);
+}
+
+.pw-summary-section:last-of-type {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.pw-summary-label {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-secondary);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mv-fg3);
+  margin: 0;
+}
+
+.pw-summary-value {
+  font-size: 12px;
+  font-family: var(--font-primary);
+  color: var(--mv-fg);
+  margin: 0;
+  word-break: break-word;
+}
+
+.pw-note {
+  font-size: 11px;
+  color: var(--mv-fg3);
+  font-style: italic;
+  padding-top: 12px;
+  border-top: 1px solid var(--mv-line-soft);
+  margin-top: 8px;
+}

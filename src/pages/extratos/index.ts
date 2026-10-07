@@ -1,0 +1,1 @@
+export { Extrato } from './Extrato';

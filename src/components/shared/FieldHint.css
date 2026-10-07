@@ -1,0 +1,58 @@
+.field-hint {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.field-hint-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: none;
+  border-radius: var(--border-radius-circle);
+  background: none;
+  color: var(--mv-fg3);
+  cursor: help;
+  transition: color var(--transition-base), background-color var(--transition-base);
+}
+
+.field-hint-btn:hover,
+.field-hint-btn[aria-expanded='true'] {
+  color: var(--mv-brand-primary);
+  background-color: rgba(15, 166, 139, 0.1);
+}
+
+.field-hint-btn:focus-visible {
+  outline: 2px solid var(--mv-brand-primary);
+  outline-offset: 2px;
+}
+
+/* Tom de erro: ícone sempre vermelho + fundo tênue, para sinalizar um problema. */
+.field-hint-btn--error {
+  color: var(--mv-brand-primary);
+  background-color: rgba(15, 166, 139, 0.1);
+}
+
+.field-hint-panel {
+  position: absolute;
+  top: calc(100% + var(--space-6));
+  left: 0;
+  z-index: 50;
+  width: max-content;
+  max-width: min(300px, calc(100vw - var(--space-32)));
+  padding: var(--space-10) var(--space-12);
+  background-color: var(--mv-surface);
+  border: 1px solid var(--mv-line);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-elevation);
+  color: var(--mv-fg2);
+  font-family: var(--font-primary);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  white-space: normal;
+  animation: mvfade 160ms ease forwards;
+}

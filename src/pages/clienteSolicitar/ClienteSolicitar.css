@@ -1,0 +1,21 @@
+/* Pequenos ajustes específicos da tela — o grosso do layout vem de
+   PropertyWizard.css (chrome do wizard) e Wizard.css (cards de serviço,
+   lista de intervenientes, resumo). */
+
+.cs-badge-vistoriador {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+}
+
+.cs-acompanhante-note {
+  margin: 0;
+}
+
+.cs-alert {
+  border: 1px solid var(--mv-brand-primary);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-8) var(--space-10);
+  background: rgba(15, 166, 139, 0.04);
+}

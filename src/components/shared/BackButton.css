@@ -1,0 +1,39 @@
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  align-self: flex-start;
+  margin-left: calc(-1 * var(--space-8));
+  margin-bottom: var(--space-8);
+  padding: var(--space-6) var(--space-8);
+  background: none;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  color: var(--mv-fg2);
+  font-family: var(--font-primary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color var(--transition-base), background-color var(--transition-base);
+}
+
+.back-button:hover {
+  color: var(--mv-brand-primary);
+  background-color: rgba(15, 166, 139, 0.08);
+}
+
+.back-button:focus-visible {
+  outline: 2px solid var(--mv-brand-primary);
+  outline-offset: 2px;
+}
+
+/* Canto superior direito, fora do fluxo — o conteúdo do wizard não perde altura
+   nem é empurrado. O container precisa ser `position: relative`. */
+.back-button--corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  align-self: auto;
+  z-index: 1;
+}

@@ -1,0 +1,36 @@
+.sap-block { display: flex; flex-direction: column; gap: var(--space-8); }
+.sap-block + .sap-block { margin-top: var(--space-16); padding-top: var(--space-16); border-top: 1px solid var(--mv-line); }
+.sap-title {
+  font-family: var(--font-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mv-fg2);
+  margin: 0;
+}
+.sap-text { font-size: 13px; color: var(--mv-fg2); margin: 0; }
+.sap-mono { font-family: var(--font-secondary); font-size: 11px; color: var(--mv-fg2); }
+
+.sap-cobranca { display: flex; align-items: center; gap: var(--space-12); flex-wrap: wrap; }
+.sap-link {
+  font-family: var(--font-secondary);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mv-fg);
+  transition: color var(--transition-fast);
+}
+.sap-link:hover { color: var(--mv-brand-primary); }
+
+.sap-servico {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-8) 0;
+  border-bottom: 1px solid var(--mv-line-soft);
+}
+.sap-servico:last-child { border-bottom: none; }
+.sap-servico-meta { display: flex; align-items: center; gap: var(--space-8); flex-wrap: wrap; }
+.sap-servico-acao { display: flex; gap: var(--space-8); align-items: flex-end; flex-wrap: wrap; }
+.sap-servico-acao > *:first-child { flex: 1; min-width: 180px; }
